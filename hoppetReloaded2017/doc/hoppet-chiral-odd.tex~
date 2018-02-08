@@ -1,0 +1,11 @@
+\documentclass[12pt]{article}
+
+\begin{document}
+In this short note will be described the modifications needed in {\tt hoppet} package in order to evolve
+(leading order only, for now) chiral--odd Fragmentation Functions.
+
+
+
+
+
+\end{document}

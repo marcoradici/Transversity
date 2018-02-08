@@ -1,0 +1,2 @@
+# the last configure that was run was
+./configure "FC=gfortran" "FFLAGS=-fno-whole-file"

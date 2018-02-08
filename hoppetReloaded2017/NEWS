@@ -1,0 +1,37 @@
+NEWS for HOPPET
+
+======================================================================
+Release 1.1.2  September 2009
+======================================================================
+
+. new build system (configure lookalike).
+
+. added 1-loop time-like (fragmentation function) evolution following
+  discussions with Wei-Tian Deng. Only partially tested.
+
+======================================================================
+Release 1.1.1  August 2008
+======================================================================
+
+. added TruncatedMoment routine (e.g. for verifying sum-rules)
+
+. added ability to extract a whole pdf(x,flav) at a given Q from a
+  tabulation, with the EvalPdfTable_Q routine
+
+. clarifications and other small changes in the documentation
+
+======================================================================
+Release 1.1.0  April 2008
+======================================================================
+
+. Name changed to hoppet
+. Many internal name changes to provide more consistent user-interface
+. Some changes in setting of default grid and evolution parameters
+. Documentation written
+
+----------------------------------------------------------------------
+Release 1.0 (named pdf-conv) (6 April 2006)
+----------------------------
+
+Imported from the PDFevln sources, with modifications of the directory
+structure and addition of some f77 hooks.

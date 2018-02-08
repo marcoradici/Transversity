@@ -1,0 +1,41 @@
+\documentclass[12pt]{article}
+
+\begin{document}
+In this short note will be described the modifications needed in {\tt hoppet} package in order to evolve
+(leading order only, for now) chiral--odd Fragmentation Functions. I started from {\tt hoppet-1.1.2}.
+
+\section{File {\tt dglap\_choices.f90}}
+
+Just a declaration added:\\
+\noindent
+{\tt integer, parameter, public :: factscheme\_FragCOddMSbar = 5}\\
+
+\section {File {\tt dglap\_holders.f90}}
+
+In function {\tt InitDglapHolder} added a {\tt case (factscheme\_FragCOddMSbar)} statement. Inside,
+the subroutine ({\tt InitSplitMatFragCOddLO}) needed to initialize the splitting matrix for 
+the chiral--odd evolution is called.
+
+\section {File {\tt dglap\_objects.f90}}
+
+Here is where the subroutine {\tt InitSplitMatFragCOddLO} is defined. I just copied {\tt InitSplitMatLO}
+and replaced {\tt sf\_Pgg}\dots\ functions with the new ones, {\tt codd\_Pgg}, etcetera.
+
+\section {File {\tt splitting\_functions.f90}}
+
+Four new functions are defined: {\tt codd\_Pgg, codd\_Pqq, codd\_Pgq} and {\tt codd\_Pqg}. 
+{\tt codd\_Pqq} is the only one returning a non--zero value.
+
+\section {Check}
+
+The program has been tested against the ``Kumano'' program. I took a fake $u$--distribution ($x(1-x)$) and 
+evolved it, in both programs, from $Q_0 = 70$ GeV to $Q = 100$ GeV, with LO evolution. A special care 
+has been devoted to match $\alpha_s$, since ``Kumano'' evolution equation is based on an explicit value 
+for $\Lambda_{\rm QCD}$. We checked that setting $\Lambda_{\rm QCD} = 0.2$ GeV, we obtain, to one loop, 
+$\alpha_s(M_Z) = 0.133861$ (with $M_Z = 91.187$ GeV), and so we put this values in the initializing section 
+of the ``Hoppet'' program.
+
+The results coincide with a precision better than $10^{-6}$.
+
+
+\end{document}
