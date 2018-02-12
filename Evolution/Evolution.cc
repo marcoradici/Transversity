@@ -37,7 +37,8 @@ int main()
   const auto as = [&] (double const& mu) -> double{ return Alphas.Evaluate(mu); };
 
   // Initialize QCD evolution objects
-  const auto DglapObj = InitializeDglapObjectsQCDtrans(g, Masses);
+  //const auto DglapObj = InitializeDglapObjectsQCDtrans(g, Masses);  // Space-like (PDFs)
+  const auto DglapObj = InitializeDglapObjectsQCDTtrans(g, Masses);  // Time-like (FFs)
 
   // Construct the DGLAP objects
   auto EvolvedPDFs = BuildDglap(DglapObj, LHToyPDFs, mu0, PerturbativeOrder, as);
