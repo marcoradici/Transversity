@@ -2,15 +2,9 @@
 // APFEL++ 2017
 //
 // Authors: Valerio Bertone: valerio.bertone@cern.ch
-//          Stefano Carrazza: stefano.carrazza@cern.ch
 //
 
-#include <apfel/grid.h>
-#include <apfel/alphaqcd.h>
-#include <apfel/tabulateobject.h>
-#include <apfel/dglapbuilder.h>
-#include <apfel/lhtoypdfs.h>
-#include <apfel/rotations.h>
+#include <apfel/apfelxx.h>
 
 using namespace apfel;
 using namespace std;
@@ -37,8 +31,8 @@ int main()
   const auto as = [&] (double const& mu) -> double{ return Alphas.Evaluate(mu); };
 
   // Initialize QCD evolution objects
-  //const auto DglapObj = InitializeDglapObjectsQCDtrans(g, Masses);  // Space-like (PDFs)
-  const auto DglapObj = InitializeDglapObjectsQCDTtrans(g, Masses);  // Time-like (FFs)
+  const auto DglapObj = InitializeDglapObjectsQCDtrans(g, Masses);  // Space-like (PDFs)
+  //const auto DglapObj = InitializeDglapObjectsQCDTtrans(g, Masses);  // Time-like (FFs)
 
   // Construct the DGLAP objects
   auto EvolvedPDFs = BuildDglap(DglapObj, LHToyPDFs, mu0, PerturbativeOrder, as);
@@ -47,7 +41,7 @@ int main()
   const TabulateObject<Set<Distribution>> TabulatedPDFs{*EvolvedPDFs, 50, 1, 1000, 3};
 
   // Final scale
-  double mu = 100;
+  double mu = 10;
 
   // Print results
   cout << scientific;
